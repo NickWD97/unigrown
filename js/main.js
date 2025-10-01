@@ -80,6 +80,36 @@
         return false;
     });
 
+    // Smooth scrolling for anchor links
+    $('a[href^="#"]').on('click', function (e) {
+        var target = $(this.hash);
+        if (target.length) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: target.offset().top - 100
+            }, 1000, 'easeInOutExpo');
+
+            // Update active nav link
+            $('.navbar-nav a').removeClass('active');
+            $(this).addClass('active');
+        }
+    });
+
+    // Update active nav on scroll
+    $(window).scroll(function () {
+        var scrollPos = $(document).scrollTop() + 150;
+
+        $('.navbar-nav a[href^="#"]').each(function () {
+            var currLink = $(this);
+            var refElement = $(currLink.attr("href"));
+
+            if (refElement.length && refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+                $('.navbar-nav a').removeClass("active");
+                currLink.addClass("active");
+            }
+        });
+    });
+
 
 })(jQuery);
 
