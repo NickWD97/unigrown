@@ -95,6 +95,20 @@
     transition: 1s;
 }
 
+.navbar .navbar-brand .navbar-logo {
+    height: 72px;
+    width: auto;
+    display: block;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 576px) {
+    .navbar .navbar-brand .navbar-logo {
+        height: 56px;
+    }
+}
+
 .navbar .navbar-nav .nav-item.nav-link,
 .navbar .navbar-nav .nav-link {
     color: var(--bs-dark);
